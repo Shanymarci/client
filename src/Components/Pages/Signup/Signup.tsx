@@ -9,16 +9,19 @@ import { apiUrl } from "../../../config";
 
 function SignUp(): JSX.Element {
     const [name,setName] = useState<string>("");
+    const [lastName,setLastName] = useState<string>("");
     const [email,setEmail] = useState<string>("");
     const [password,setPassword] = useState<string>("");
+    const [verifyPassword,setVerifyPassword] = useState<string>("");
 
-    const handleSubmit = () => {
+    const handleSubmit = (data : any) => {
 
         const endPoint = "/api/Users/register";
         const url = apiUrl + endPoint;
         
-        axios.post(url, {name,email,password})
+        axios.post(url, data)
                 .then(res => {
+                  //do what you need here
                     console.log(res.data);
                 })
                 .catch(err => {  
@@ -26,31 +29,72 @@ function SignUp(): JSX.Element {
                 });
     }
 
-
-
     const inputData = [
         {
-            type: "name",
-            label : "Name:",
-            className : "form-control",
-            id : "name",
-            onChange : setName
-        },        
-        {
-            type: "email",
-            label : "Email:",
-            className : "form-control",
-            id : "email",
-            onChange : setEmail
+          type: "text",
+          label: "First Name:",
+          className: "form-control",
+          id: "firstName",
+          name: "firstName",
+          onChange: setName,
+          validation: {
+            required: "First name is required",
+          },
         },
         {
-            type: "password", 
-            label : "Password:",
-            className : "form-control",
-            id : "password",
-            onChange : setPassword
+          type: "text",
+          label: "Last Name:",
+          className: "form-control",
+          id: "lastName",
+          name: "lastName",
+          onChange: setLastName,
+          validation: {
+            required: "Last name is required",
+          },
         },
-    ]
+        {
+          type: "email",
+          label: "Email:",
+          className: "form-control",
+          id: "email",
+          name: "email",
+          onChange: setEmail,
+          validation: {
+            required: "Email is required",
+            pattern: {
+              value: /^\S+@\S+$/i,
+              message: "Invalid email format",
+            },
+          },
+        },
+        {
+          type: "password",
+          label: "Password:",
+          className: "form-control",
+          id: "password",
+          name: "password",
+          onChange: setPassword,
+          validation: {
+            required: "Password is required",
+            minLength: {
+              value: 6,
+              message: "Password must be at least 6 characters long",
+            },
+          },
+        },
+        {
+          type: "password",
+          label: "Repeat Password:",
+          className: "form-control",
+          id: "repeatPassword",
+          name: "repeatPassword",
+          onChange: setVerifyPassword,
+          validation: {
+            required: "Repeat password is required",
+          },
+        },
+      ];
+      
 
     const form = {
         label: "Signup Form",
@@ -58,8 +102,6 @@ function SignUp(): JSX.Element {
     };
 
     const buttonLabel = 'Sign up';
-
-
 
     return (
         <Form 

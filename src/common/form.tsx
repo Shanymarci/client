@@ -1,31 +1,31 @@
 import React from "react";
+import { useForm, FormProvider } from "react-hook-form";
 
-import formProps from "../interfaces/formProps";
-
+import FormProps from "../interfaces/formProps";
 import Input from "./input";
 
-const Form: React.FC<formProps> = ({ form,input,buttonLabel }) => {
+const Form: React.FC<FormProps> = ({ form, input, buttonLabel, validation }) => {
+  const methods = useForm();
 
-    const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        form.onSubmit();
-    };
+  const onSubmit = (data: any) => {
+    form.onSubmit(data);
+  };
 
-    return (
-      <div className="container">
-        <h2>{form.label}</h2>
-        <form onSubmit = { onSubmit }>
-
-            {input.map((elem) => {
-                return(
-                    <Input inputProps = { elem } />
-                )
-            })}
-
-          <button type="submit" className="btn btn-primary">{ buttonLabel }</button>
+  return (
+    <div className="container">
+      <h2>{form.label}</h2>
+      <FormProvider {...methods}>
+        <form onSubmit = {methods.handleSubmit(onSubmit)}>
+          {input.map((elem) => (
+            <Input key={elem.id} inputProps = { elem } errors = {methods.formState.errors} />
+          ))}
+          <button type="submit" className="btn btn-primary">
+            {buttonLabel}
+          </button>
         </form>
-      </div>
-    )
-}
+      </FormProvider>
+    </div>
+  );
+};
 
 export default Form;
