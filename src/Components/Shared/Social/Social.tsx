@@ -1,4 +1,4 @@
-import "./Social.css";
+
 import { FaFacebook, FaLinkedin } from "react-icons/fa";
 function Social(): JSX.Element {
     return (

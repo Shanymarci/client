@@ -1,9 +1,9 @@
-import "./Home.css";
+import Search from "../Search/Search";
 
 function Home(): JSX.Element {
     return (
         <div className="Home">
-            <p>This is home</p>
+            <Search/>
         </div>
     );
 }

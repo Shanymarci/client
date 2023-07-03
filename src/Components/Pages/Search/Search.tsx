@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./Search.css";
+
 import axios from "axios";
 import urlService from "../../../Services/UrlService";
 

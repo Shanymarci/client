@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm, FormProvider } from "react-hook-form";
 
-import FormProps from "../interfaces/formProps";
+import FormProps from "../models/formProps";
 import Input from "./input";
 
 const Form: React.FC<FormProps> = ({ form, input, buttonLabel, validation }) => {

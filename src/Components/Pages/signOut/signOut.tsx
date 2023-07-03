@@ -1,5 +1,5 @@
 import { Button } from "react-bootstrap";
-import { auth } from "../../../instances/localStorage";
+import { auth } from "../../../store/localStorage";
 
 
 function SignOut(): JSX.Element {

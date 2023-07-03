@@ -1,5 +1,6 @@
 import Social from "../../Shared/Social/Social";
-import "./Footer.css";
+
+import "../../../styles/layout/Footer.css";
 
 function Footer(): JSX.Element {
     const year = new Date().getFullYear();

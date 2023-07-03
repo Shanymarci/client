@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import DarkModeToggle from "react-dark-mode-toggle";
 
-
 interface DarkModeProps {
     isDarkMode : boolean;
     setDarkMode : (isDarkMode : boolean) => void;

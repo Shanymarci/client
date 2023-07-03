@@ -1,4 +1,4 @@
-import "./Signin.css";
+
 
 import React, { useState,FormEvent } from "react";
 
@@ -10,8 +10,8 @@ import { apiUrl } from "../../../config";
 
 import Form from "../../../common/form";
 
-import { http } from "../../../instances/doteNetServer";
-import { auth } from "../../../instances/localStorage";
+import { http } from "../../../store/doteNetServer";
+import { auth } from "../../../store/localStorage";
 
 function SignIn(): JSX.Element {
 
